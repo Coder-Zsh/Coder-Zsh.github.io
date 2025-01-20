@@ -506,6 +506,6 @@ button#go-up:hover #percent {
   background-repeat: no-repeat;
   /* 背景图像大小 */
   background-size: cover;
-
+  /* 背景图像居中展示 */
   background-position: center;
 }
