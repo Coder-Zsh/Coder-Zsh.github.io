@@ -4,6 +4,48 @@
   
     
     <entry>
+      <title>Redis 学习笔记</title>
+      <link href="/2025/01/20/Redis-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <url>/2025/01/20/Redis-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Redis-学习笔记"><a href="#Redis-学习笔记" class="headerlink" title="Redis  学习笔记"></a>Redis  学习笔记</h1><h2 id="1-认识Redis"><a href="#1-认识Redis" class="headerlink" title="1.认识Redis"></a>1.认识Redis</h2><p>​    Redis是一种键值型的NoSql数据库，数据以key,value形式存储，value可以是字符串，数值，后者json。。。；</p><p>​    安装好后，文件夹下有三个主要的文件：</p><ul><li><p>redis-cli: 是redis提供的命令行客户端</p></li><li><p>redis-server：是redis提供的服务器端启动脚本</p></li><li><p>redis-sentinel：是redis的哨兵启动脚本</p></li></ul><p>  运行redis-server可以开启服务器</p><h2 id="2-与关系型数据库的区别"><a href="#2-与关系型数据库的区别" class="headerlink" title="2.与关系型数据库的区别"></a>2.与关系型数据库的区别</h2><ul><li>不存在关联关系</li><li>查询方式多种多样，传统数据库会基于Sql语句查询</li><li>事务上不满足ACID(原子性，一致性，隔离性，持久性)原则，而是满足BASE理论</li><li>传统存在磁盘，它存在内存，读写速度更快</li></ul><h4 id=""><a href="#" class="headerlink" title=" "></a> </h4>]]></content>
+      
+      
+      <categories>
+          
+          <category> 笔记 </category>
+          
+          <category> Redis </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Redis技术随想</title>
+      <link href="/2025/01/20/Redis%E6%8A%80%E6%9C%AF%E9%9A%8F%E6%83%B3/"/>
+      <url>/2025/01/20/Redis%E6%8A%80%E6%9C%AF%E9%9A%8F%E6%83%B3/</url>
+      
+        <content type="html"><![CDATA[<h4 id="1-什么是BASE理论"><a href="#1-什么是BASE理论" class="headerlink" title="1.什么是BASE理论"></a>1.什么是BASE理论</h4><p>BASE起源于CAP定理</p><blockquote><p>BASE是基本可用(Basically Available)、软状态(Soft State)和最终一致性( Eventually Consistent)三个短语的缩写。<br>BASE理论是对CAP中一致性和可用性权衡的结果，它的核心思想是：即使无法做到强一致性，但每个应用都可以根据自身业务特点，采用适当的方式来使系统达到最终一致性。</p></blockquote><p><strong>基本可用</strong>：与正常系统而言可能是响应时间存在时延，或者服务不可用时，或者限流时做一个降级处理如Sentinel中的熔断降级</p><p><strong>软状态</strong>：</p><blockquote><p>指允许系统中的数据存在中间状态，并认为该中间状态不会影响系统整体可用性，即允许系统不同节点的数据副本之间进行同步的过程存在时延。</p></blockquote><p>一些不重要的信息可以扔给mq,而不是系统一直阻塞等待数据状态传回</p><p><strong>最终一致性</strong>：系统中的所有数据副本在经过一段时间同步后，最终一致</p><h4 id="2-什么是CAP"><a href="#2-什么是CAP" class="headerlink" title="2.什么是CAP"></a>2.什么是CAP</h4><p>CAP源于ACID四大特性</p><blockquote><p>CAP是 Consistency、Availability、Partition tolerance三个词语的缩写，分别表示一致性,可用性和分区容错性。</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随想 </category>
+          
+          <category> Redis </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>第一篇文章</title>
       <link href="/2025/01/17/2025-1-17-%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/"/>
       <url>/2025/01/17/2025-1-17-%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</url>
