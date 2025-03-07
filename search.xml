@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>缓存常见问题</title>
+      <link href="/2025/03/07/%E7%BC%93%E5%AD%98%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/"/>
+      <url>/2025/03/07/%E7%BC%93%E5%AD%98%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<h3 id="缓存常见问题"><a href="#缓存常见问题" class="headerlink" title="缓存常见问题"></a>缓存常见问题</h3><h4 id="1-缓存穿透"><a href="#1-缓存穿透" class="headerlink" title="1.缓存穿透"></a>1.缓存穿透</h4><p><strong>缓存穿透</strong>是指客户端请求的数据在缓存中和数据库中都不存在，这样缓存永远不会生效，这些请求都会打到数据库。</p><p><strong>解决方案</strong>：</p><ul><li><p>缓存空对象</p><ul><li>优点：实现简单，维护方便</li><li>缺点：<ul><li>额外的内存消耗</li><li>可能造成短期的不一致</li></ul></li></ul><p>如果使用id为key缓存空对象，那使用<code>uuid</code>作为id访问，也会造成大量请求打到数据库，</p><p>短期的不一致是因为，如果访问一个不存在的数据，这时将它存为null，然后数据库将这条数据插入到数据库，别人访问时还是null，</p><p>可以在插入时主动更新，但也会有新的问题</p></li><li><p>布隆过滤</p><ul><li>优点：内存占用较少，没有多余的key</li><li>缺点：<ul><li>实现复杂</li><li>存在误判可能</li></ul></li></ul><p>不存在一定不存在，存在可能存在</p><p>只用布隆过滤器的话，也会有一定的穿透可能：布隆判断存在，这时缓存和数据库中数据可能是不存在的，这样也造成了穿透</p><p>布隆过滤器不能修改，想修改只能删除，再创一个布隆过滤器</p></li><li><p>增强id的复杂度，避免被猜测id规律</p></li><li><p>做好数据的基础格式校验</p></li><li><p>加强用户权限校验</p></li><li><p>做好热点参数的限流.。</p></li></ul><h4 id="2-缓存雪崩"><a href="#2-缓存雪崩" class="headerlink" title="2.缓存雪崩"></a>2.缓存雪崩</h4><p><strong>缓存雪崩</strong>是指在同一时段大量的缓存key同时失效或者Redis服务宕机，导致大量请求到达数据库，带来巨大压力。</p><p><strong>解决方案</strong></p><ul><li>给不同的key的TTL添加随机值</li><li>利用Redis集群提高服务的可用性</li><li>给缓存业务添加降级限流策略</li><li>给业务添加多段缓存</li></ul><h4 id="3-缓存击穿"><a href="#3-缓存击穿" class="headerlink" title="3.缓存击穿"></a>3.缓存击穿</h4><p><strong>缓存击穿问题</strong>也叫热点key问题，就是一个被<strong>高并发访问</strong>并且<strong>缓存重建业务比较复杂</strong>的key突然失效了，无效的请求访问会在瞬间给数据库带来巨大的冲击。</p><p>缓存重建业务比较复杂是，在缓存未命中，查询数据库，到写入缓存这一阶段，比较复杂，用时比较长，加上它又是一个热点数据，所以会出现击穿问题</p><p><strong>解决方案</strong></p><ul><li>互斥锁<ul><li>缺点：一个线程获取锁后，别的线程会一致等待，用户体验不太好，可以添加一些降级策略</li><li>一致性较高</li></ul></li><li>逻辑过期<ul><li>可用性较高</li></ul></li></ul><p><img src="https://picbed.zzsio.site/img/image-20250307152833523.png" alt="image-20250307152833523"></p><p><img src="https://picbed.zzsio.site/img/image-20250307152915322.png" alt="image-20250307152915322"></p><p>​     </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 笔记 </category>
+          
+          <category> Redis </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>缓存更新策略</title>
       <link href="/2025/03/06/%E7%BC%93%E5%AD%98%E6%9B%B4%E6%96%B0%E7%AD%96%E7%95%A5/"/>
       <url>/2025/03/06/%E7%BC%93%E5%AD%98%E6%9B%B4%E6%96%B0%E7%AD%96%E7%95%A5/</url>
@@ -34,7 +55,7 @@
       
       <categories>
           
-          <category> 随想 </category>
+          <category> 实现 </category>
           
           <category> Spring </category>
           
