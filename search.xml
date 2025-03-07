@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>windows 常用查端口命令</title>
+      <link href="/2025/03/07/windows%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+      <url>/2025/03/07/windows%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<h3 id="windows-常用查端口命令"><a href="#windows-常用查端口命令" class="headerlink" title="windows 常用查端口命令"></a>windows 常用查端口命令</h3><p>1，查看端口占用情况</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ano</span><br></pre></td></tr></table></figure><p>2，查看某个端口被占用的情况</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ano | findstr xxxx        //xxxx为查询的端口号</span><br></pre></td></tr></table></figure><p>3，查看某个状态的端口</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ano | findstr xxxx        //xxxx为查询的端口状态</span><br></pre></td></tr></table></figure><p>4，查看使用指定端口的应用程序</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tasklist | findstr xxxx   //xxxx指的是pid</span><br></pre></td></tr></table></figure><p>5，结束指定进程</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">taskkill /pid xxxx -t -f    //xxxx指的是pid</span><br><span class="line">或者：taskkill /f /t /im QQ.exe</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随想 </category>
+          
+          <category> Windows </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>基于互斥锁方式解决缓存击穿问题</title>
       <link href="/2025/03/07/%E5%9F%BA%E4%BA%8E%E4%BA%92%E6%96%A5%E9%94%81%E6%96%B9%E5%BC%8F%E8%A7%A3%E5%86%B3%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF%E9%97%AE%E9%A2%98/"/>
       <url>/2025/03/07/%E5%9F%BA%E4%BA%8E%E4%BA%92%E6%96%A5%E9%94%81%E6%96%B9%E5%BC%8F%E8%A7%A3%E5%86%B3%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF%E9%97%AE%E9%A2%98/</url>
